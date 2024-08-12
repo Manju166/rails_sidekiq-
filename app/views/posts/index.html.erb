@@ -1,0 +1,16 @@
+ <%= stylesheet_link_tag("index") %>
+<h1 align="center">Posts</h1>
+
+
+<div class="cards-container">
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+    <div class="card">
+      <h2><%= post["title"] %></h2>
+      <p><%= post["body"] %></p>
+    </div>
+  <% end %>
+  <% else %>
+    <p>No posts found.</p>
+  <% end %>
+</div>

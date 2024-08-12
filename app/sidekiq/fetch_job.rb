@@ -1,8 +1,9 @@
 class FetchJob
   include Sidekiq::Job
 
-  def perform(*args)
-    puts "hello world"
-    # Do something
+  def perform(title,body)
+    puts "hello"
+
+    Blog.create(title:title, body:body)
   end
 end

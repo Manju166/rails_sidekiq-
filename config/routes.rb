@@ -1,5 +1,7 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  get "posts/index"
+  get "posts/show"
   devise_for :users
   authenticate :user, ->(u) {u.admin?} do
     mount Sidekiq::Web => '/sidekiq'

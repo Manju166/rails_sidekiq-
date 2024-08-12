@@ -1,0 +1,51 @@
+<%= stylesheet_link_tag("editacc")%>
+<div class="editpage">
+<h2>Edit Resource</h2>
+
+  <form action="<%= registration_path(resource_name) %>" method="post">
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" autofocus autocomplete="email">
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div class="waiting-confirmation">
+        Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+      </div>
+    <% end %>
+
+    <div class="form-field">
+      <label for="password">Password <i>(leave blank if you don't want to change it)</i></label>
+      <input type="password" id="password" name="password" autocomplete="new-password">
+      <% if @minimum_password_length %>
+        <br>
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="form-field">
+      <label for="password_confirmation">Password Confirmation</label>
+      <input type="password" id="password_confirmation" name="password_confirmation" autocomplete="new-password">
+    </div>
+
+    <div class="form-field">
+      <label for="current_password">Current Password <i>(we need your current password to confirm your changes)</i></label>
+      <input type="password" id="current_password" name="current_password" autocomplete="current-password">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">Update</button>
+    </div>
+  </form>
+
+  <h3>Cancel my account</h3>
+
+  <div>
+    <form action="<%= registration_path(resource_name) %>" method="post" onsubmit="return confirm('Are you sure?')">
+      <button type="submit">Cancel my account</button>
+    </form>
+  </div>
+
+  <a href="javascript:history.back()">Back</a>
+
+</div>
